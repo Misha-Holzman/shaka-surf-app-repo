@@ -1,24 +1,12 @@
-# README
+# React on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Before this lesson, students should be able to...
+- Describe how views are rendered in Rails (Trace the process, compare with node).
+- Explain how React is transpiled into standard JavaScript the browser can use.
 
-Things you may want to cover:
+## Learning Objectives
+- Describe the difference between static and a dynamic asset.
+- List the two Heroku hooks for deployment.
+- Describe the difference between Development? Deployment? Production?
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Intro...
