@@ -19,6 +19,7 @@ if (!('NODE_ENV' in process.env)) require('dotenv').config();
 const config = {
   entry: {
     main: `${APP_DIR}/main.jsx`,
+    vendor: ['react', 'react-dom', 'prop-types'],
   },
   output: {
     path:     BUILD_DIR,
@@ -35,10 +36,7 @@ const config = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      names:     ['common', 'main'],
-      minChunks: Infinity,
-      children:  true,
-      async:     true,
+      names:     ['common', 'vendor'],
     }),
     new CleanWebpackPlugin(['dist']),
     new webpack.LoaderOptionsPlugin({
@@ -50,7 +48,7 @@ const config = {
       },
     }),
     new HtmlWebpackPlugin({
-      title:      'React To Do',
+      title:      'Narwhalll',
       xhtml:      true,
       inject:     false,
       template:   htmlTemplate,
@@ -159,7 +157,6 @@ if (process.env &&
 
   config.plugins = config.plugins.concat(prodPlugins);
   config.cache = false;
-  config.debug = false;
   config.devtool = undefined;
 }
 
