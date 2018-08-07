@@ -11,7 +11,10 @@
 
 ## Intro...
 
-(tbd)
+Generate your rails app:
+```bash
+rails new Flashcard-App -JSTCMG --skip-turbolinks --skip-coffee --skip-active-storage --skip-bootsnap --database=postgresql --api
+```
 
 
 ## Resources
