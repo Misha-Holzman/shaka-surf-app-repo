@@ -1,29 +1,49 @@
-const webpack            = require('webpack');
-const path               = require('path');
-const HtmlWebpackPlugin  = require('html-webpack-plugin');
-const ExtractTextPlugin  = require('extract-text-webpack-plugin');
-const htmlTemplate       = require('html-webpack-template');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+/**
+  @author Jason Seminara <js@ga.co>
+  @description GA's Custom webpack config for most React apps
+  @since 2018-06-01
+*/
+const path                     = require('path');
+const HtmlWebpackPlugin        = require('html-webpack-plugin');
+const ExtractTextPlugin        = require('extract-text-webpack-plugin');
+const htmlTemplate             = require('html-webpack-template');
+const { BundleAnalyzerPlugin }   = require('webpack-bundle-analyzer');
+const { webpack_build: build } = require('./package');
 
-const BUILD_DIR         = path.resolve(__dirname, 'public');
-const APP_DIR           = path.resolve(__dirname, 'client/src');
+// The main entry of your React app.
+const entryPoint  = path.resolve(__dirname, build.entry);
+
+// Where should we output?
+const OUTPUT_DIR  = path.resolve(__dirname, build.output);
+
+// The title of the page we're outputting
+// and the id where we'll attach our react app
+// @note this should match whatever's in the `entryPoint`
+const htmlConfig = {
+  title:      build.title,
+  appMountId: build.react_mount_root,
+};
+
+/** ************ */
 
 const fontLoaderConfig = {
-  name:  '/fonts/[name].[ext]',
+  name:  'fonts/[name].[ext]',
   limit: 100,
 };
 
 // let's bring in local environmental variables
 if (!('NODE_ENV' in process.env)) require('dotenv').config();
 
-const config = {
-  entry: {
-    main: `${APP_DIR}/main.jsx`,
-    vendor: ['react', 'react-dom', 'prop-types'],
-  },
+module.exports = {
+  mode:  process.env.NODE_ENV,
+  entry: [
+    '@babel/polyfill',
+    entryPoint,
+  ],
   output: {
-    path:     BUILD_DIR,
-    filename: 'js/[name].js',
+    path:       OUTPUT_DIR,
+    filename:   'js/[name].js',
+    publicPath: '/',
   },
   cache:   true,
   devtool: 'inline-source-map',
@@ -31,30 +51,31 @@ const config = {
     colors:  true,
     reasons: true,
   },
+  devServer: {
+    proxy: [{
+      context: ['/auth', '/api'],
+      target:  'http://localhost:3000/',
+    }]
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  optimization: {
+    splitChunks: {
+      // include all types of chunks
+      chunks: 'all',
+    },
+  },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names:     ['common', 'vendor'],
-    }),
-    new CleanWebpackPlugin(['dist']),
-    new webpack.LoaderOptionsPlugin({
-      debug: true,
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-      },
-    }),
+    //new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
-      title:      'Narwhalll',
-      xhtml:      true,
-      inject:     false,
-      template:   htmlTemplate,
-      appMountId: 'container',
+      ...htmlConfig,
+      xhtml:    true,
+      inject:   false,
+      favicon:  'favicon.ico',
+      template: htmlTemplate,
     }),
-    new ExtractTextPlugin('/css/[name].css', {
+    new ExtractTextPlugin('css/[name].css', {
       allChunks: true,
     }),
   ],
@@ -63,10 +84,23 @@ const config = {
     rules: [
       {
         test: /\.s(a|c)ss$/,
-        use:  ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use:      'css-loader!sass-loader',
-        }),
+        use:  [{
+          loader: 'style-loader', // inject CSS to page
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS modules
+        }, {
+          loader:  'postcss-loader', // Run post css actions
+          options: {
+            plugins() { // post css plugins, can be exported to postcss.config.js
+              return [
+                require('precss'),
+                require('autoprefixer'),
+              ];
+            },
+          },
+        }, {
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
       },
       {
         test: /\.jsx?$/,
@@ -87,7 +121,7 @@ const config = {
         use:  [{
           loader:  'file-loader',
           options: {
-            name: '/images/[name].[ext]',
+            name: 'images/[name].[ext]',
           },
         }],
       },
@@ -140,24 +174,3 @@ const config = {
     ],
   },
 };
-
-if (process.env &&
-  process.env.NODE_ENV &&
-  process.env.NODE_ENV === 'production') {
-  const prodPlugins = [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: true,
-      },
-      output: {
-        comments: false,
-      },
-    }),
-  ];
-
-  config.plugins = config.plugins.concat(prodPlugins);
-  config.cache = false;
-  config.devtool = undefined;
-}
-
-module.exports = config;

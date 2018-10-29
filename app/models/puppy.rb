@@ -1,2 +1,0 @@
-class Puppy < ApplicationRecord
-end

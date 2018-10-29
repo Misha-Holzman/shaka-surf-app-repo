@@ -17,3 +17,6 @@
 public/*
 package-lock.json
 node_modules
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

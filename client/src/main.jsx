@@ -1,8 +1,7 @@
 /* eslint-env browser */
 import React    from 'react';
 import ReactDOM from 'react-dom';
-import 'font-awesome/scss/font-awesome.scss';
-import 'bulma/bulma.sass';
+
 
 import App from './App';
 

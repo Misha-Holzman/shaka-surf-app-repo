@@ -9,11 +9,33 @@
 - List the two Heroku hooks for deployment.
 - Describe the difference between Development? Deployment? Production?
 
-## Intro...
+## Introduction
 
+There's a lot of stuff out there written about React on Rails. 
+> Most of it is garbage. 
+
+We're going to build out our project as a [Rails 5 api](), and use [Webpack]() 
+to build out React into Rails's `public` folder. 
+
+### Advantages
+✅ does NOT use Rails' asset pipelines
+✅ does NOT use Create React App.
+✅ 
+
+
+## 1. Get started
+
+1. clone this project
+2. cd into this directory
+
+
+
+## 2. Generate your rails app in 
 Generate your rails app:
 ```bash
-rails new Flashcard-App -JSTCMG --skip-turbolinks --skip-coffee --skip-active-storage --skip-bootsnap --database=postgresql --api
+cd ..
+rails new react-on-rails -JSTCMG --skip-turbolinks --skip-coffee --skip-active-storage --skip-bootsnap --database=postgresql --api
+cd react-on-rails
 ```
 
 
