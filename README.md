@@ -37,7 +37,8 @@ cd ..
 rails new react-on-rails -JSTCMG --skip-turbolinks --skip-coffee --skip-active-storage --skip-bootsnap --database=postgresql --api
 cd react-on-rails
 ```
-
+## 3. Authentication
+https://www.codementor.io/omedale/simple-approach-to-rails-5-api-authentication-with-json-web-token-cpqbgrdo6
 
 ## Resources
 
