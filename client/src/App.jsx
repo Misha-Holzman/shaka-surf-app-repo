@@ -26,9 +26,14 @@ class App extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <h1 className="title">Hello Students</h1>
+          <h1 className="title">Hello Christian</h1>
           {
-            students.map((s, key) => <p key={key}><small>{key}</small> {s.name}</p>)
+            students.map(s => (
+              <p key={ s.id }>
+                <small>{s.id}</small>
+                {s.name}
+              </p>
+            ))
           }
         </div>
       </section>
