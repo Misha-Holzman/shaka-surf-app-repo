@@ -1,19 +1,26 @@
 import React   from 'react';
 import { hot } from 'react-hot-loader';
-import axios from 'axios';
+import axios   from 'axios';
 import 'bulma';
+import LoginForm from './LoginForm';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       students: [],
+      isLoggedIn: this.checkLogin(),
     };
     this.getAllStudents = this.getAllStudents.bind(this);
+    this.tryLogin = this.tryLogin.bind(this);
   }
 
-  componentDidMount() {
-    this.getAllStudents();
+  // componentDidMount() {
+  //   this.getAllStudents();
+  // }
+
+  checkLogin() {
+    return !!localStorage.getItem('access-token');
   }
 
   async getAllStudents() {
@@ -21,20 +28,30 @@ class App extends React.Component {
     this.setState({ students });
   }
 
+  async tryLogin({ email, password }) {
+    const { data: { access_token } } = await axios.post('/auth/login', { email, password });
+    localStorage.setItem('access-token', access_token );
+    this.setState({
+      isLoggedIn: this.checkLogin(),
+    })
+  }
+
   render() {
-    const { students } = this.state;
+    const { isLoggedIn } = this.state;
     return (
       <section className="section">
         <div className="container">
-          <h1 className="title">Hello Christian</h1>
           {
-            students.map(s => (
-              <p key={ s.id }>
-                <small>{s.id}</small>
-                {s.name}
-              </p>
-            ))
+            (!isLoggedIn) ? (
+              <LoginForm submitAction={this.tryLogin} />
+            ) : (
+              <span>
+                <h1 className="title">Hello Christian!</h1>
+                <button>Log out</button>
+              </span>
+            )
           }
+
         </div>
       </section>
 

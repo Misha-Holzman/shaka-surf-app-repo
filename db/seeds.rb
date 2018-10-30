@@ -5,3 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+Tweet.destroy_all
+User.destroy_all
+
+User.create([
+  {
+    name: 'Christian',
+    email: 'kring.vonlehe@gmail.com',
+    password: 'christian9',
+  },
+  {
+    name: 'Shaun',
+    email: 'shaun@gmail.com',
+    password: 'shaun',
+  },
+  {
+    name: 'Brian',
+    email: 'brian@gmail.com',
+    password: 'brian',
+  }
+])
+
+
+50.times do
+  Tweet.create!({
+    content: Faker::Lorem.sentence,
+    user_id: User.all.ids.sample,
+    public: true
+  })
+
+end
+
+puts "Created #{User.count} users and #{Tweet.count} tweets."

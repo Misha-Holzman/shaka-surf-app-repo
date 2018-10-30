@@ -53,7 +53,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-es2015-spread": "^6.22.0",
     "bcrypt": "^3.0.1",
-    "bloomer": "^0.6.3",
+    "bloomer": "^0.6.5",
     "bulma": "^0.7.1",
     "clean-webpack-plugin": "^0.1.17",
     "concurrently": "^4.0.1",
