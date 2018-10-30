@@ -16,8 +16,9 @@ class UsersController < ApplicationController
     authenticate params[:email], params[:password]
   end
 
-  def test
-    render json: { message: 'You have passed authentication and authorization test' }
+  def index
+    @users = User.all
+    render json: { users: @users }
   end
 
   private
