@@ -33,7 +33,7 @@ User.create([
   Tweet.create!({
     content: Faker::Lorem.sentence,
     user_id: User.all.ids.sample,
-    public: true
+    public: Faker::Boolean.boolean(0.6),
   })
 
 end
