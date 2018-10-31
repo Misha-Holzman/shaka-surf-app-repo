@@ -3,8 +3,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all
-
+    @tweets = Tweet.public_only
     render json: @tweets
   end
 
