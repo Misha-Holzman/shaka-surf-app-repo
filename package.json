@@ -4,8 +4,8 @@
   "description": "A demo in Rails 5 and React.js",
   "main": "server.js",
   "engines": {
-    "node": "11.0.0",
-    "yarn": "1.10.1"
+    "node": "^11.0.0",
+    "yarn": "^1.10.1"
   },
   "private": true,
   "scripts": {
@@ -34,13 +34,11 @@
   "homepage": "https://git.generalassemb.ly/wdi-nyc/react-on-rails#readme",
   "devDependencies": {
     "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-transform-object-assign": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
-    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-free": "^5.3.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
@@ -51,7 +49,6 @@
     "autoprefixer": "^9.1.5",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.4",
-    "babel-plugin-transform-es2015-spread": "^6.22.0",
     "bcrypt": "^3.0.1",
     "bloomer": "^0.6.5",
     "bulma": "^0.7.1",
