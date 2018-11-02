@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   scope 'api' do
-    get 'tweets/mine', to: 'tweets#mine'
-    resources :tweets
   end
 
   scope 'auth' do
