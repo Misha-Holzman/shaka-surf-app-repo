@@ -7,7 +7,6 @@ const path                     = require('path');
 const HtmlWebpackPlugin        = require('html-webpack-plugin');
 const ExtractTextPlugin        = require('extract-text-webpack-plugin');
 const htmlTemplate             = require('html-webpack-template');
-const { BundleAnalyzerPlugin }   = require('webpack-bundle-analyzer');
 const { webpack_build: build } = require('./package');
 
 // The main entry of your React app.
@@ -55,7 +54,7 @@ module.exports = {
     proxy: [{
       context: ['/auth', '/api'],
       target:  'http://localhost:3000/',
-    }]
+    }],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -67,7 +66,6 @@ module.exports = {
     },
   },
   plugins: [
-    //new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       ...htmlConfig,
       xhtml:    true,

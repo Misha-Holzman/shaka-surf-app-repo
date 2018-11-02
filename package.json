@@ -11,10 +11,11 @@
   "scripts": {
     "dev": "concurrently 'rails s' 'webpack-dev-server --hot --mode=development'",
     "build": "webpack -p --mode=production",
-    "build-dev": "webpack -d --progress",
-    "build-watch": "webpack-dev-server --hot --mode=development ",
+    "build:dev": "webpack -d --progress --mode=development",
+    "build:dev:analyze": "webpack-bundle-analyzer",
+    "build:watch": "webpack-dev-server --hot --mode=development ",
     "clean": "rimraf public node_modules",
-    "heroku-postbuild": "webpack -p && rimraf client webpack.config.js .babelrc .gitignore README.md",
+    "heroku-postbuild": "webpack -p --mode=production && rimraf client webpack.config.js .babelrc .gitignore README.md",
     "test": "jest"
   },
   "webpack_build": {
@@ -71,6 +72,7 @@
     "html-webpack-template": "^6.1.0",
     "jest": "^23.6.0",
     "jest-localstorage-mock": "^2.3.0",
+    "jest-mock-axios": "^2.1.11",
     "jwt-decode": "^2.2.0",
     "luxon": "^1.4.3",
     "node-sass": "^4.8.3",
@@ -96,6 +98,8 @@
     "babel-core": "^7.0.0-bridge.0"
   },
   "jest": {
-    "setupFiles": ["jest-localstorage-mock"]
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
   }
 }

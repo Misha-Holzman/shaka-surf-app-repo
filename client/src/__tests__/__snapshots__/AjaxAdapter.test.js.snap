@@ -1,11 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AjaxAdapter should call the constructor 1`] = `
+Array [
+  Object {
+    "baseURL": "/api/tweets",
+    "headers": Object {
+      "Authorization": "Bearer my-dummy-token",
+      "Content-Type": "application/json",
+    },
+    "timeout": 1000,
+  },
+]
+`;
+
 exports[`AjaxAdapter should create an AjaxAdapter 1`] = `
 Object {
   "config": Object {
     "baseURL": "/api/tweets",
     "headers": Object {
-      "Authorization": "Bearer null",
+      "Authorization": "Bearer my-dummy-token",
       "Content-Type": "application/json",
     },
     "timeout": 1000,
@@ -14,5 +27,12 @@ Object {
   "destroy": [Function],
   "read": [Function],
   "update": [Function],
+}
+`;
+
+exports[`AjaxAdapter should remove the token in header when no token is present 1`] = `
+Object {
+  "Authorization": "Bearer null",
+  "Content-Type": "application/json",
 }
 `;

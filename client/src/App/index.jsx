@@ -2,7 +2,6 @@
 import React   from 'react';
 import { hot } from 'react-hot-loader';
 import axios   from 'axios';
-import 'bulma';
 import LoginForm from '../LoginForm';
 
 class App extends React.Component {
@@ -33,7 +32,7 @@ class App extends React.Component {
     localStorage.setItem('access-token', access_token );
     this.setState({
       isLoggedIn: this.checkLogin(),
-    })
+    });
   }
 
   render() {

@@ -45,7 +45,6 @@ describe('TokenService', () => {
 
     TokenService.token = 'abc-1234';
 
-    expect(headers.Authorization).toBe('Bearer abc-1234')
-
+    expect(headers.Authorization).toBe('Bearer abc-1234');
   });
 });

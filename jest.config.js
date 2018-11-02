@@ -3,13 +3,13 @@
 
 module.exports = {
   // All imported modules in your tests should be mocked automatically
-  // automock: false,
+  //automock: true,
 
   // Stop running tests after the first failure
   // bail: false,
 
   // Respect "browser" field in package.json when resolving modules
-  // browser: false,
+  browser: true,
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/var/folders/20/wqj60ywn4lx9lkx7vlbqjxdr0000gp/T/jest_dy",
@@ -24,7 +24,7 @@ module.exports = {
   // collectCoverageFrom: null,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -159,7 +159,9 @@ module.exports = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: null,
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest'
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
