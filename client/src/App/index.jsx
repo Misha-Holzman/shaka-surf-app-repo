@@ -1,14 +1,14 @@
+/* eslint-env browser */
 import React   from 'react';
 import { hot } from 'react-hot-loader';
 import axios   from 'axios';
 import 'bulma';
-import LoginForm from './LoginForm';
+import LoginForm from '../LoginForm';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      students: [],
       isLoggedIn: this.checkLogin(),
     };
     this.getAllStudents = this.getAllStudents.bind(this);

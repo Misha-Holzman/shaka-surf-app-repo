@@ -12,7 +12,7 @@ import {
 } from 'bloomer';
 
 
-export default class TaskForm extends React.Component {
+export default class Form extends React.Component {
   constructor(props) {
     super(props);
 
@@ -51,7 +51,7 @@ export default class TaskForm extends React.Component {
   }
 
   render() {
-    const { buttonText, size, isGrouped } = this.props;
+    const { buttonText, size } = this.props;
     const { email, password } = this.state;
     return (
       <Hero isColor="light" isFullHeight style={{ 'margin-top': '-60px'}}>
@@ -110,13 +110,13 @@ export default class TaskForm extends React.Component {
   }
 }
 
-TaskForm.propTypes = {
+Form.propTypes = {
   submitAction: PropTypes.func.isRequired,
   buttonText:   PropTypes.string,
   size:         PropTypes.string,
 };
 
-TaskForm.defaultProps = {
+Form.defaultProps = {
   size:       'large',
   buttonText: 'Log In',
 };

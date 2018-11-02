@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TokenService should instantiate 1`] = `
+Object {
+  "destroy": [Function],
+  "token": null,
+}
+`;

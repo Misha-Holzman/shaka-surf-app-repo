@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm should render 1`] = `
+<section
+  className="hero is-fullheight is-light"
+  style={
+    Object {
+      "margin-top": "-60px",
+    }
+  }
+>
+  <div
+    className="hero-body"
+  >
+    <div
+      className="container has-text-centered"
+    >
+      <div
+        className="columns"
+      >
+        <div
+          className="column is-4 is-offset-4"
+        >
+          <div
+            className="box"
+          >
+            <h1
+              className="title"
+            >
+              Hiya!
+            </h1>
+            <h2
+              className="subtitle"
+            >
+              Let’s Get You logged in...
+            </h2>
+            <form
+              onSubmit={[Function]}
+            >
+              <div
+                className="field"
+              >
+                <div
+                  className="control"
+                >
+                  <input
+                    className="input is-large"
+                    name="email"
+                    onChange={[Function]}
+                    placeholder="Email"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                className="field"
+              >
+                <div
+                  className="control is-expanded"
+                >
+                  <input
+                    className="input is-large"
+                    name="password"
+                    onChange={[Function]}
+                    placeholder="password"
+                    type="password"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                className="field"
+              >
+                <div
+                  className="control"
+                >
+                  <button
+                    className="button is-info is-large is-fullwidth"
+                    isBlock={true}
+                    type="submit"
+                  >
+                    Log In
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;

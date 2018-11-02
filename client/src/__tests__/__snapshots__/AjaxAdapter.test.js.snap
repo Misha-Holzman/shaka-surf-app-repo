@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AjaxAdapter should create an AjaxAdapter 1`] = `
+Object {
+  "config": Object {
+    "baseURL": "/api/tweets",
+    "headers": Object {
+      "Authorization": "Bearer null",
+      "Content-Type": "application/json",
+    },
+    "timeout": 1000,
+  },
+  "create": [Function],
+  "destroy": [Function],
+  "read": [Function],
+  "update": [Function],
+}
+`;
