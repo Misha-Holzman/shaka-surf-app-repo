@@ -10,30 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_155606) do
+ActiveRecord::Schema.define(version: 2018_11_02_203608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tweets", force: :cascade do |t|
-    t.string "content", limit: 140
-    t.bigint "user_id"
-    t.boolean "public"
+  create_table "experiences", force: :cascade do |t|
+    t.string "level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["content"], name: "index_tweets_on_content"
-    t.index ["created_at"], name: "index_tweets_on_created_at"
-    t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
     t.string "email"
+    t.string "tel"
     t.string "password_digest"
+    t.boolean "contact"
+    t.integer "location"
+    t.bigint "experience_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["experience_id"], name: "index_users_on_experience_id"
+    t.index ["location"], name: "index_users_on_location"
+    t.index ["tel"], name: "index_users_on_tel", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "tweets", "users"
+  add_foreign_key "users", "experiences"
 end

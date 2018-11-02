@@ -7,35 +7,43 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-Tweet.destroy_all
+Experience.destroy_all
 User.destroy_all
+Experience.create([
+  { level:'beginner'},
+  { level:'intermediate'},
+  { level:'advanced'},
+])
+
 
 User.create([
   {
-    name: 'Christian',
-    email: 'kring.vonlehe@gmail.com',
-    password: 'christian9',
+    username: 'misha',
+    email: 'mcholzman1@gmail.com',
+    tel: '212-999-9999',
+    password: 'baseball',
+    experience_id: 3,
+    contact: true,
   },
   {
-    name: 'Shaun',
+    username: 'shaun',
     email: 'shaun@gmail.com',
+    tel: '212-888-8888',
     password: 'shaun',
+    experience_id: 2,
+    contact: true,
   },
   {
-    name: 'Brian',
+    username: 'brian',
     email: 'brian@gmail.com',
+    tel: '212-777-7777',
     password: 'brian',
+    experience_id: 1,
+    contact: false,
   }
 ])
 
 
-50.times do
-  Tweet.create!({
-    content: Faker::Lorem.sentence,
-    user_id: User.all.ids.sample,
-    public: Faker::Boolean.boolean(0.6),
-  })
 
-end
 
-puts "Created #{User.count} users and #{Tweet.count} tweets."
+puts "Created #{User.count} users and #{Experience.count} experience."
