@@ -10,11 +10,13 @@ class App extends React.Component {
     super(props);
     this.state = {
       isLoggedIn: this.checkLogin(),
-      expLevel: ""
+      expLevel: "",
+      username: ""
     };
 
     this.getAllStudents = this.getAllStudents.bind(this);
     this.tryLogin = this.tryLogin.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   // componentDidMount() {
@@ -32,15 +34,22 @@ class App extends React.Component {
     this.setState({ students });
   }
 
-  async tryLogin({ email, password }) {
+  async tryLogin({ email, password, username }) {
     const {
       data: { access_token }
     } = await axios.post("/auth/login", { email, password });
     localStorage.setItem("access-token", access_token);
     this.setState({
-      isLoggedIn: this.checkLogin()
+      isLoggedIn: this.checkLogin(),
+      username: username
     });
   }
+
+  logout() {
+    localStorage.clear();
+    console.log('clicked')
+  }
+
 
   render() {
     const { isLoggedIn } = this.state;
@@ -50,10 +59,11 @@ class App extends React.Component {
             <LoginForm submitAction={this.tryLogin} />
           ) : (
             <span>
-              <h1 className="title">Hello Misha!</h1>
-              <button>Log out</button>
+              <h1 className="title">Hello {this.state.username}</h1>
+              <button type='submit' submitAction={this.logout}>Logout</button>
             </span>
           )}
+
           <BegHomePage />
       </div>
 

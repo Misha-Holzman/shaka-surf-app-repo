@@ -17,6 +17,8 @@ gem 'faker'
 gem 'jwt'
 gem 'simple_command'
 gem 'httparty', '~> 0.13.7'
+gem 'twilio-ruby'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

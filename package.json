@@ -101,5 +101,10 @@
     "setupFiles": [
       "jest-localstorage-mock"
     ]
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "twilio": "^3.23.2"
   }
 }
