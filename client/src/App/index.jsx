@@ -1,15 +1,18 @@
 /* eslint-env browser */
-import React   from 'react';
-import { hot } from 'react-hot-loader';
-import axios   from 'axios';
-import LoginForm from '../LoginForm';
+import React, { Component } from "react";
+import { hot } from "react-hot-loader";
+import axios from "axios";
+import LoginForm from "../LoginForm";
+import BegHomePage from "../BegHomePage";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: this.checkLogin(),
+      expLevel: ""
     };
+
     this.getAllStudents = this.getAllStudents.bind(this);
     this.tryLogin = this.tryLogin.bind(this);
   }
@@ -19,40 +22,40 @@ class App extends React.Component {
   // }
 
   checkLogin() {
-    return !!localStorage.getItem('access-token');
+    return !!localStorage.getItem("access-token");
   }
 
   async getAllStudents() {
-    const { data: { students } } = await axios.get('/api/students');
+    const {
+      data: { students }
+    } = await axios.get("/api/students");
     this.setState({ students });
   }
 
   async tryLogin({ email, password }) {
-    const { data: { access_token } } = await axios.post('/auth/login', { email, password });
-    localStorage.setItem('access-token', access_token );
+    const {
+      data: { access_token }
+    } = await axios.post("/auth/login", { email, password });
+    localStorage.setItem("access-token", access_token);
     this.setState({
-      isLoggedIn: this.checkLogin(),
+      isLoggedIn: this.checkLogin()
     });
   }
 
   render() {
     const { isLoggedIn } = this.state;
     return (
-      <section className="section">
-        <div className="container">
-          {
-            (!isLoggedIn) ? (
-              <LoginForm submitAction={this.tryLogin} />
-            ) : (
-              <span>
-                <h1 className="title">Hello Christian!</h1>
-                <button>Log out</button>
-              </span>
-            )
-          }
-
-        </div>
-      </section>
+      <div className="main-container">
+          {!isLoggedIn ? (
+            <LoginForm submitAction={this.tryLogin} />
+          ) : (
+            <span>
+              <h1 className="title">Hello Misha!</h1>
+              <button>Log out</button>
+            </span>
+          )}
+          <BegHomePage />
+      </div>
 
     );
   }

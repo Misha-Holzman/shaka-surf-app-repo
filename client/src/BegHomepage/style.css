@@ -1,0 +1,9 @@
+body {
+  height: 1285px;
+  margin: 0;
+  background-image: url("https://i.imgur.com/YTfqE1Y.jpg");
+  background-image: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,39 @@
+#container {
+  height: 100%;
+  width: 100%;
+}
+
+.main-container {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("https://i.imgur.com/dVDejtV.jpg");
+  background-image: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/*#beg-background {
+  background-image: url("");
+  background-image: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#int-background {
+  background-image: url("");
+  background-image: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#adv-background {
+  background-image: url("");
+  background-image: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}*/
