@@ -6,8 +6,11 @@ import LoginForm from "../LoginForm";
 import BegHomepage from "../BegHomepage";
 import IntHomepage from "../IntHomepage";
 import AdvHomepage from "../AdvHomepage";
-import SearchForm from '../SearchForm';
+import SearchForm from "../SearchForm";
+import BestDestinations from "../BestDestinations"
+import TitleOfBestSpots from "../TitleOfBestSpots"
 import Navbar from "../Navbar";
+import Mapbox from "../Map";
 import "./style.css";
 
 class App extends React.Component {
@@ -27,8 +30,11 @@ class App extends React.Component {
     return (
       <div className="main-container">
         <Navbar />
-        <div className="">
+        <div className="content">
         <BegHomepage />
+        <TitleOfBestSpots />
+        <BestDestinations />
+        <Mapbox/>
         </div>
       </div>
     );
