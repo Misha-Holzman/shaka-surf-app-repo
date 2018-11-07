@@ -34,16 +34,16 @@ class IntHomePage extends Component {
           sunrise: weatherData.astronomy[0].sunrise,
           maxTempF: weatherData.maxtempF,
           minTempF: weatherData.mintempF,
-          time: weatherData.hourly[0].time,
-          waveHeight: weatherData.hourly[0].sigHeight_m,
-          windSpeed: weatherData.hourly[0].windspeedMiles,
-          windDirection: weatherData.hourly[0].winddir16Point,
-          weatherIconUrl: weatherData.hourly[0].weatherIconUrl[0].value,
-          weatherDescription: weatherData.hourly[0].weatherDesc[0].value,
-          swellHeight_ft: weatherData.hourly[0].swellHeight_ft,
-          swellPeriod_secs: weatherData.hourly[0].swellPeriod_secs,
-          swellDirection: weatherData.hourly[0].swellDir16Point,
-          waterTemp: weatherData.hourly[0].waterTemp_F,
+          time: weatherData.hourly[2].time,
+          waveHeight: weatherData.hourly[2].sigHeight_m,
+          windSpeed: weatherData.hourly[2].windspeedMiles,
+          windDirection: weatherData.hourly[2].winddir16Point,
+          weatherIconUrl: weatherData.hourly[2].weatherIconUrl[0].value,
+          weatherDescription: weatherData.hourly[2].weatherDesc[0].value,
+          swellHeight_ft: weatherData.hourly[2].swellHeight_ft,
+          swellPeriod_secs: weatherData.hourly[2].swellPeriod_secs,
+          swellDirection: weatherData.hourly[2].swellDir16Point,
+          waterTemp: weatherData.hourly[2].waterTemp_F,
         };
         self.setState({
           info: info
@@ -58,66 +58,65 @@ class IntHomePage extends Component {
   render() {
     const { info } = this.state;
     return (
-      <div className="int-homepage-container">
-        <p>API STUFF:</p>
-        <br />
+      <div className="container-2">
+      {/*
+      <div className="beg-homepage-container">
+      <img src={info.weatherIconUrl} className="weather-img" />
         <p>
-          <strong>Date: </strong>
-          {info.date}
+          <strong>Date</strong>
+          : {info.date}
         </p>
         <p>
-          <strong>sunrise: </strong>
-          {info.sunrise}
+          <strong>time </strong>
+          : {info.time} am
         </p>
         <p>
-          <strong>maxTempF: </strong>
-          {info.maxTempF}
+          <strong>sunrise</strong>
+          : {info.sunrise}
         </p>
         <p>
-          <strong>minTempF: </strong>
-          {info.minTempF}
+          <strong>maxTempF</strong>
+          : {info.maxTempF}
         </p>
         <p>
-          <strong>time: </strong>
-          {info.time}
+          <strong>minTempF</strong>
+          : {info.minTempF}
         </p>
         <p>
-          <strong>waveHeight: </strong>
-          {info.waveHeight}
+          <strong>waveHeight</strong>
+          : {info.waveHeight}
         </p>
         <p>
-          <strong>windSpeed: </strong>
-          {info.windSpeed}
+          <strong>windSpeed</strong>
+          : {info.windSpeed}
         </p>
         <p>
-          <strong>windDirection: </strong>
-          {info.windDirection}
+          <strong>windDirection</strong>
+          : {info.windDirection}
         </p>
         <p>
-          <strong>weatherIconUrl: </strong>
-        </p>
-        <img src={info.weatherIconUrl} />
-        <p>
-          <strong>weatherDescription: </strong>
-          {info.weatherDescription}
+          <strong>weatherDescription</strong>
+          : {info.weatherDescription}
         </p>
         <p>
-          <strong>swellHeight_ft: </strong>
-          {info.swellHeight_ft}
+          <strong>swellHeight_ft</strong>
+          : {info.swellHeight_ft}
         </p>
         <p>
-          <strong>swellPeriod_secs: </strong>
-          {info.swellPeriod_secs}
+          <strong>swellPeriod_secs</strong>
+          : {info.swellPeriod_secs}
         </p>
         <p>
-          <strong>swellDirection: </strong>
-          {info.swellDirection}
+          <strong>swellDirection</strong>
+          : {info.swellDirection}
         </p>
         <p>
-          <strong>waterTemp: </strong>
-          {info.waterTemp}
+          <strong>waterTemp</strong>
+          : {info.waterTemp}
         </p>
 
+      </div>
+      */}
       </div>
     );
   }

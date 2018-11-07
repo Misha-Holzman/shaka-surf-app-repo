@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import Navbar from "../Navbar";
 import "./style.css";
 
 class BegHomePage extends Component {
@@ -19,14 +20,13 @@ class BegHomePage extends Component {
     const self = this;
     Axios.get(api_end)
       .then(response => {
-        console.log(response)
+        console.log(response);
 
         let locationData = response.data.data.request[0];
         let weatherData = response.data.data.weather[0];
 
         console.log(locationData);
         console.log(weatherData);
-
 
         const info = {
           location: locationData.query,
@@ -43,7 +43,7 @@ class BegHomePage extends Component {
           swellHeight_ft: weatherData.hourly[2].swellHeight_ft,
           swellPeriod_secs: weatherData.hourly[2].swellPeriod_secs,
           swellDirection: weatherData.hourly[2].swellDir16Point,
-          waterTemp: weatherData.hourly[2].waterTemp_F,
+          waterTemp: weatherData.hourly[2].waterTemp_F
         };
         self.setState({
           info: info
@@ -51,73 +51,47 @@ class BegHomePage extends Component {
         console.log(info);
       })
       .catch(error => {
-        console.log('error fetching data');
+        console.log("error fetching data");
       });
   }
 
   render() {
     const { info } = this.state;
     return (
-      <div className="beg-homepage-container">
-        <p>API STUFF:</p>
-        <br />
-        <p>
-          <strong>Date: </strong>
-          {info.date}
-        </p>
-        <p>
-          <strong>sunrise: </strong>
-          {info.sunrise}
-        </p>
-        <p>
-          <strong>maxTempF: </strong>
-          {info.maxTempF}
-        </p>
-        <p>
-          <strong>minTempF: </strong>
-          {info.minTempF}
-        </p>
-        <p>
-          <strong>time: </strong>
-          {info.time} am
-        </p>
-        <p>
-          <strong>waveHeight: </strong>
-          {info.waveHeight}
-        </p>
-        <p>
-          <strong>windSpeed: </strong>
-          {info.windSpeed > '23' ? info.windSpeed : "not enough wind breh"}
-        </p>
-        <p>
-          <strong>windDirection: </strong>
-          {info.windDirection}
-        </p>
-        <p>
-          <strong>weatherIconUrl: </strong>
-        </p>
-        <img src={info.weatherIconUrl} />
-        <p>
-          <strong>weatherDescription: </strong>
-          {info.weatherDescription}
-        </p>
-        <p>
-          <strong>swellHeight_ft: </strong>
-          {info.swellHeight_ft}
-        </p>
-        <p>
-          <strong>swellPeriod_secs: </strong>
-          {info.swellPeriod_secs}
-        </p>
-        <p>
-          <strong>swellDirection: </strong>
-          {info.swellDirection}
-        </p>
-        <p>
-          <strong>waterTemp: </strong>
-          {info.waterTemp}
-        </p>
-
+      <div className="container-1">
+        <div className="beg-homepage-container">
+          <p>{info.date}</p>
+          <p>
+            <strong>Weather</strong>: {info.weatherDescription}
+          </p>
+          <p>
+            <strong>Report taken </strong>: {info.time} am
+          </p>
+          <p>
+            <strong>Sunrise</strong>: {info.sunrise}
+          </p>
+          <p>
+            <strong>Water Temperature</strong>: {info.waterTemp} f
+          </p>
+          <p>
+            <strong>Wave Height</strong>: {info.waveHeight} ft
+          </p>
+          <p>
+            <strong>Wind Speed</strong>: {info.windSpeed} mph
+          </p>
+          <p>
+            <strong>Swell Height</strong>: {info.swellHeight_ft} ft
+          </p>
+          <p>
+            <strong>Swell Period</strong>: {info.swellPeriod_secs} seconds
+          </p>
+          <p>
+            <strong>swell Direction</strong>: {info.swellDirection}
+          </p>
+        </div>
+        <a href="#about">
+          <img className="arrow" src="https://i.imgur.com/pSTTXkS.png" alt="" />
+        </a>
       </div>
     );
   }

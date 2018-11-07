@@ -2,7 +2,11 @@
 
 
 .nav-container {
-
+  background-color: rgba(255, 255, 255, 1);
+  width: 85%;
+  margin: 0 auto;
+/*  border-right: 1px solid black;
+  border-left: 1px solid black;*/
 }
 
 .nav {
@@ -17,40 +21,45 @@
 
 .nav-text-links {
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50px;
-  color: white;
+/*  background-color: rgba(0, 0, 0, 0.5);
+*/  border-radius: 50px;
+  color: black;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
 }
 
 .nav-text-links:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+  text-decoration: underline;
   color: black;
 }
 
 .nav li {
   display: inline;
 }
-.nav a {
+
+.nav .nav-text-links {
   display: inline-block;
   padding: 10px;
 }
 
 .logo-img {
-  height: 60%;
+  margin-top: 15px;
+  height: 130px;
+  margin-bottom: 10px;
 }
 
 .logout-button {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: solid white 3px;
+  background-color: rgba(255, 255, 255, 1);
+  border: solid black 1px;
   border-radius: 100px;
-  color: white;
+  color: black;
   font-size: 20px;
   font-family: 'Montserrat', sans-serif;
+  margin-left: 20px;
+  margin-right: 35px;
 }
 
 .logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.6);
-  color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }

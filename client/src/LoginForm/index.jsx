@@ -60,7 +60,7 @@ export default class Form extends React.Component {
       <Hero
         isColor="light"
         isFullHeight
-        style={{ marginTop: "10px", color: "white", marginLeft: "-50px" }}
+        style={{ marginTop: "10px", color: "white", marginRight: "30px" }}
       >
         <HeroBody>
           <Container hasTextAlign="centered">
@@ -84,7 +84,7 @@ export default class Form extends React.Component {
                     <Field>
                       <Control>
                         <Input
-                          style={{ border: "solid orange 2px" }}
+                          style={{ border: "solid black 1px" }}
                           name="email"
                           isSize={size}
                           onChange={this.handleChange}
@@ -97,7 +97,7 @@ export default class Form extends React.Component {
                       <Control isExpanded>
                         <Input
                           style={{
-                            border: "solid orange 2px",
+                            border: "solid black 1px",
                             marginTop: "4px"
                           }}
                           name="password"
@@ -113,11 +113,11 @@ export default class Form extends React.Component {
                       <Control>
                         <Button
                           style={{
-                            marginTop: "7px",
-                            backgroundColor: "rgba(0, 0, 0, 0.5)",
-                            border: "solid white 1px",
+                            marginTop: "15px",
+                            backgroundColor: "rgba(255, 255, 255, 1)",
+                            border: "solid black 1px",
                             borderRadius: "100px",
-                            color: "white",
+                            color: "black",
                             fontSize: "15px"
                           }}
                           type="submit"

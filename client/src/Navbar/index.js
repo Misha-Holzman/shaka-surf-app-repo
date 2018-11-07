@@ -60,12 +60,12 @@ class Navbar extends Component {
         <ul class="nav">
           <li>
             <a href="/" className="nav-text-links">
-              Home
+              Forecasts
             </a>
           </li>
           <li>
             <a href="/about/" className="nav-text-links">
-              About
+              Instruction
             </a>
           </li>
           <li>
@@ -75,7 +75,7 @@ class Navbar extends Component {
           </li>
           <li>
             <a href="/clients/" className="nav-text-links">
-              Clients
+              Media
             </a>
           </li>
           <li>

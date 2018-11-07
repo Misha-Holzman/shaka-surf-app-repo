@@ -1,48 +1,42 @@
 body {
-  min-height: 1300px;
+  min-height: 2000px;
   margin: 0;
+/*  background-image: url("https://i.imgur.com/dVDejtV.jpg");*/
+  background-color: white;
 }
 
 body > #container {
   min-height: 1300px;
 }
 
-.main-container {
-  max-width: 100%;
+/*.main-container {
+  max-width: 85%;
   min-height: 1300px;
-  background-image: url("https://i.imgur.com/dVDejtV.jpg");
+  background-image: url("https://i.imgur.com/xEniclo.jpg");
   background-image: cover;
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   margin: auto;
-}
-
-/*
-https://i.imgur.com/dVDejtV.jpg
-https://i.imgur.com/Pq8KZeW.jpg
-https://i.imgur.com/wCEvj4s.jpg
-*/
-
-.logged-in-form {
-  border: solid white 2px;
-  width: 20%;
-  margin-bottom: 50px;
-  margin: 0 auto;
-}
-
-h1 {
-  color: white;
-}
-
-/*.surf-report {
-
 }*/
 
 
+/*
+https://i.imgur.com/FVtU3wm.jpg
+
+https://i.imgur.com/dVDejtV.jpg
+https://i.imgur.com/Pq8KZeW.jpg
 
 
 
+
+
+*/
+
+
+/*.surf-Api-report {
+  margin-top: 5%;
+}*/
 
 /*#beg-background {
   background-image: url("");
