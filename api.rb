@@ -10,7 +10,7 @@
 require 'HTTParty'
 require 'pp'
 
-class CatFacts
+class SurfConditions
   include HTTParty
   attr_accessor :facts
 

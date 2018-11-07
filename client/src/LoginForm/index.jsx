@@ -1,24 +1,27 @@
-import React     from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import {
-  Field, Control, Input, Button, Hero,
+  Field,
+  Control,
+  Input,
+  Button,
+  Hero,
   HeroBody,
   Container,
   Columns,
   Column,
   Box,
   Title,
-  Subtitle,
-} from 'bloomer';
-
+  Subtitle
+} from "bloomer";
 
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email:    '',
-      password: '',
+      email: "",
+      password: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +36,7 @@ export default class Form extends React.Component {
 
     // set the state as needed
     this.setState({
-      [name]: value,
+      [name]: value
     });
   }
 
@@ -45,8 +48,8 @@ export default class Form extends React.Component {
 
     // reset the form
     this.setState({
-      email:    '',
-      password: '',
+      email: "",
+      password: ""
     });
   }
 
@@ -54,18 +57,34 @@ export default class Form extends React.Component {
     const { buttonText, size } = this.props;
     const { email, password } = this.state;
     return (
-      <Hero isColor="light" isFullHeight style={{ 'margin-top': '-60px'}}>
+      <Hero
+        isColor="light"
+        isFullHeight
+        style={{ marginTop: "10px", color: "white", marginLeft: "-50px" }}
+      >
         <HeroBody>
           <Container hasTextAlign="centered">
             <Columns>
               <Column isSize={4} isOffset={4}>
                 <Box>
-                  <Title>Hiya!</Title>
-                  <Subtitle>Let’s Get You logged in...</Subtitle>
+                  {/*
+                  <Title
+                    style={{
+                      color: "black",
+                      borderRadius: "20px",
+                      backgroundColor: "rgba(255, 255, 255, 0.7)",
+                      padding: "5px"
+                    }}
+                  >
+                    Log in to your accout:
+                  </Title>
+                  */}
+
                   <form onSubmit={this.handleSubmit}>
                     <Field>
                       <Control>
                         <Input
+                          style={{ border: "solid orange 2px" }}
                           name="email"
                           isSize={size}
                           onChange={this.handleChange}
@@ -77,6 +96,10 @@ export default class Form extends React.Component {
                     <Field>
                       <Control isExpanded>
                         <Input
+                          style={{
+                            border: "solid orange 2px",
+                            marginTop: "4px"
+                          }}
                           name="password"
                           isSize={size}
                           onChange={this.handleChange}
@@ -89,13 +112,21 @@ export default class Form extends React.Component {
                     <Field>
                       <Control>
                         <Button
+                          style={{
+                            marginTop: "7px",
+                            backgroundColor: "rgba(0, 0, 0, 0.5)",
+                            border: "solid white 1px",
+                            borderRadius: "100px",
+                            color: "white",
+                            fontSize: "15px"
+                          }}
                           type="submit"
                           isSize={size}
                           isColor="info"
                           isBlock
                           isFullWidth
                         >
-                          { buttonText }
+                          {buttonText}
                         </Button>
                       </Control>
                     </Field>
@@ -112,11 +143,11 @@ export default class Form extends React.Component {
 
 Form.propTypes = {
   submitAction: PropTypes.func.isRequired,
-  buttonText:   PropTypes.string,
-  size:         PropTypes.string,
+  buttonText: PropTypes.string,
+  size: PropTypes.string
 };
 
 Form.defaultProps = {
-  size:       'large',
-  buttonText: 'Log In',
+  size: "large",
+  buttonText: "Log In"
 };

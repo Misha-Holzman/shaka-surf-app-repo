@@ -8,9 +8,14 @@
   height: 400px;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  padding: 10px;
+  bottom: 0;
+  position: relative;
 }
 
 p {
+  background-color: white;
+  border-radius: 60px;
   padding: 10px;
 }
-

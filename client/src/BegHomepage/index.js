@@ -34,16 +34,16 @@ class BegHomePage extends Component {
           sunrise: weatherData.astronomy[0].sunrise,
           maxTempF: weatherData.maxtempF,
           minTempF: weatherData.mintempF,
-          time: weatherData.hourly[0].time,
-          waveHeight: weatherData.hourly[0].sigHeight_m,
-          windSpeed: weatherData.hourly[0].windspeedMiles,
-          windDirection: weatherData.hourly[0].winddir16Point,
-          weatherIconUrl: weatherData.hourly[0].weatherIconUrl[0].value,
-          weatherDescription: weatherData.hourly[0].weatherDesc[0].value,
-          swellHeight_ft: weatherData.hourly[0].swellHeight_ft,
-          swellPeriod_secs: weatherData.hourly[0].swellPeriod_secs,
-          swellDirection: weatherData.hourly[0].swellDir16Point,
-          waterTemp: weatherData.hourly[0].waterTemp_F,
+          time: weatherData.hourly[2].time,
+          waveHeight: weatherData.hourly[2].sigHeight_m,
+          windSpeed: weatherData.hourly[2].windspeedMiles,
+          windDirection: weatherData.hourly[2].winddir16Point,
+          weatherIconUrl: weatherData.hourly[2].weatherIconUrl[0].value,
+          weatherDescription: weatherData.hourly[2].weatherDesc[0].value,
+          swellHeight_ft: weatherData.hourly[2].swellHeight_ft,
+          swellPeriod_secs: weatherData.hourly[2].swellPeriod_secs,
+          swellDirection: weatherData.hourly[2].swellDir16Point,
+          waterTemp: weatherData.hourly[2].waterTemp_F,
         };
         self.setState({
           info: info
@@ -79,7 +79,7 @@ class BegHomePage extends Component {
         </p>
         <p>
           <strong>time: </strong>
-          {info.time}
+          {info.time} am
         </p>
         <p>
           <strong>waveHeight: </strong>
@@ -87,7 +87,7 @@ class BegHomePage extends Component {
         </p>
         <p>
           <strong>windSpeed: </strong>
-          {info.windSpeed}
+          {info.windSpeed > '23' ? info.windSpeed : "not enough wind breh"}
         </p>
         <p>
           <strong>windDirection: </strong>
