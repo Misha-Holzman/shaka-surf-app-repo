@@ -5,9 +5,10 @@ class TitleOfBestSpots extends Component {
   render() {
     return (
       <div className="spot-suggest-title">
+      <div id="bestSpots"></div>
 
       {/*change the experience level based on state*/}
-        <h1 className="best-spot-title">Best Surf Spots for a Beginner!</h1>
+        <h1 className="best-spot-title">Best Surf Spots for a *Beginner!</h1>
         <div id="press">
         <div className="press-container hover11">
           <div className="img-container">

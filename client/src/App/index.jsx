@@ -6,7 +6,6 @@ import LoginForm from "../LoginForm";
 import BegHomepage from "../BegHomepage";
 import IntHomepage from "../IntHomepage";
 import AdvHomepage from "../AdvHomepage";
-import SearchForm from "../SearchForm";
 import BestDestinations from "../BestDestinations"
 import TitleOfBestSpots from "../TitleOfBestSpots"
 import Navbar from "../Navbar";
@@ -34,7 +33,6 @@ class App extends React.Component {
         <BegHomepage />
         <TitleOfBestSpots />
         <BestDestinations />
-        <Mapbox/>
         </div>
       </div>
     );

@@ -12,7 +12,10 @@ body > #container {
 .content {
 /*  position: relative;
   margin: 0 auto;*/
+}
 
+html {
+  scroll-behavior: smooth;
 }
 
 /*.main-container {

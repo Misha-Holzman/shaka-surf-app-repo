@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
+import SearchBar from "../SearchForm";
 import Navbar from "../Navbar";
 import "./style.css";
 
@@ -8,17 +9,36 @@ class BegHomePage extends Component {
     super(props);
     this.state = {
       info: [],
-      isHidden: false
+      isHidden: false,
+      userZipcode: ""
     };
     this.getSurfReport = this.getSurfReport.bind(this);
+    this.handleZipcodeChange = this.handleZipcodeChange.bind(this);
   }
 
   // if location is 5 char string, hit the api to return lat long
   // if location is array, hit the api to return zip
 
-  async convertZip(zip) {
+  async handleZipcodeChange(zipcode) {
+    this.setState({
+      userZipcode: zipcode
+    });
+
+    if (this.state.userZipcode.length === 5) {
+      let readyZipcode = this.state.userZipcode
+      convertZip(readyZipcode)
+    }
+    // else {
+    //   console.log("no zip")
+    //   // prompt("please enter a valid zipcode")
+    // }
+
+  }
+
+
+  async convertZip(readyZipcode) {
     //const weatherAPIkey = 'u9Ayipu6q9JX9DVPmAAGOZcxu0yDbn795LdVNvgicZZ61FmJpyxFLgHQqf7qU8GB';
-    const apiURL = `http://api.zippopotam.us/us/${zip}`;
+    const apiURL = `http://api.zippopotam.us/us/${readyZipcode}`;
     try {
       const {
         data: {
@@ -70,20 +90,20 @@ class BegHomePage extends Component {
 
     const info = {
       location: place,
-      date: weatherData.date,
-      sunrise: weatherData.astronomy[0].sunrise,
-      maxTempF: weatherData.maxtempF,
-      minTempF: weatherData.mintempF,
-      time: weatherData.hourly[2].time,
-      waveHeight: weatherData.hourly[2].sigHeight_m,
-      windSpeed: weatherData.hourly[2].windspeedMiles,
-      windDirection: weatherData.hourly[2].winddir16Point,
-      weatherIconUrl: weatherData.hourly[2].weatherIconUrl[0].value,
+      date:               weatherData.date,
+      sunrise:            weatherData.astronomy[0].sunrise,
+      maxTempF:           weatherData.maxtempF,
+      minTempF:           weatherData.mintempF,
+      time:               weatherData.hourly[2].time,
+      waveHeight:         weatherData.hourly[2].sigHeight_m,
+      windSpeed:          weatherData.hourly[2].windspeedMiles,
+      windDirection:      weatherData.hourly[2].winddir16Point,
+      weatherIconUrl:     weatherData.hourly[2].weatherIconUrl[0].value,
       weatherDescription: weatherData.hourly[2].weatherDesc[0].value,
-      swellHeight_ft: weatherData.hourly[2].swellHeight_ft,
-      swellPeriod_secs: weatherData.hourly[2].swellPeriod_secs,
-      swellDirection: weatherData.hourly[2].swellDir16Point,
-      waterTemp: weatherData.hourly[2].waterTemp_F
+      swellHeight_ft:     weatherData.hourly[2].swellHeight_ft,
+      swellPeriod_secs:   weatherData.hourly[2].swellPeriod_secs,
+      swellDirection:     weatherData.hourly[2].swellDir16Point,
+      waterTemp:          weatherData.hourly[2].waterTemp_F
     };
 
     this.setState({ info });
@@ -93,6 +113,9 @@ class BegHomePage extends Component {
     const locationObtained = ({ coords: { latitude, longitude } }) => {
       this.getSurfReport({ latitude, longitude });
       //do_something(position.coords.latitude, position.coords.longitude);
+      this.setState({
+        isHidden: false
+      });
     };
 
     const locationDenied = err => {
@@ -117,43 +140,50 @@ class BegHomePage extends Component {
 
   render() {
     const { info } = this.state;
+    const zipcode = this.state.userZipcode;
     return (
       <div className="container-1">
-        {!this.state.isHidden === true ? (
+        {
+          !this.state.isHidden === true ?
+          // || zipcode.length === 5
+          (
           <div className="beg-homepage-container">
-            <p>{info.date}</p>
+            <p id="date"><span id="date">{info.date}</span></p>
             <p>
-              <strong>Weather</strong>: {info.weatherDescription}
+              <strong>WEATHER – </strong>  <span id="data-size" id="data-size">{info.weatherDescription}</span>
             </p>
             <p>
-              <strong>Report taken </strong>: {info.time} am
+              <strong>REPORT TAKEN – </strong>  <span id="data-size">{info.time} am</span>
             </p>
             <p>
-              <strong>Sunrise</strong>: {info.sunrise}
+              <strong>SUNRISE – </strong>  <span id="data-size">{info.sunrise}</span>
             </p>
             <p>
-              <strong>Water Temperature</strong>: {info.waterTemp} f
+              <strong>WATER TEMP – </strong>  <span id="data-size">{info.waterTemp} f</span>
             </p>
             <p>
-              <strong>Wave Height</strong>: {info.waveHeight} ft
+              <strong>WAVE HEIGHT – </strong><span id="data-size"> {info.waveHeight} ft</span>
             </p>
             <p>
-              <strong>Wind Speed</strong>: {info.windSpeed} mph
+              <strong>WIND SPEED – </strong>  <span id="data-size">{info.windSpeed} mph</span>
             </p>
             <p>
-              <strong>Swell Height</strong>: {info.swellHeight_ft} ft
+              <strong>SWELL HEIGHT – </strong>  <span id="data-size">{info.swellHeight_ft} ft</span>
             </p>
             <p>
-              <strong>Swell Period</strong>: {info.swellPeriod_secs} seconds
+              <strong>SWELL PERIOD – </strong>  <span id="data-size">{info.swellPeriod_secs} seconds</span>
             </p>
             <p>
-              <strong>swell Direction</strong>: {info.swellDirection}
+              <strong>SWELL DIRECTION – </strong>  <span id="data-size">{info.swellDirection}</span>
             </p>
           </div>
         ) : (
-          <p className="enter-loc-prompt">Please Enter Your Location</p>
+          <div className="enter-loc-prompt">
+            <p className="enterZip">Enter Zip Code:</p>
+            <SearchBar onZipcodeChange={this.handleZipcodeChange}/>
+          </div>
         )}
-        <a href="#about">
+        <a href="#bestSpots">
           <img className="arrow" src="https://i.imgur.com/pSTTXkS.png" alt="" />
         </a>
       </div>

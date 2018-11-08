@@ -30,12 +30,14 @@ class Navbar extends Component {
   async getAllUsers({ username }) {
     const {
       data: { access_token }
-    } = await axios.get("/test", { username });
-    localStorage.setItem("username", username);
+    } = await axios.get("/auth/login", { username });
     this.setState({
       username: username
     });
   }
+
+
+
 
   async tryLogin({ email, password }) {
     const {
@@ -57,7 +59,7 @@ class Navbar extends Component {
     const { isLoggedIn } = this.state;
     return (
       <div className="nav-container">
-        <ul class="nav">
+        <ul className="nav">
           <li>
             <a href="/" className="nav-text-links">
               Forecasts
