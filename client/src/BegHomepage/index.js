@@ -23,20 +23,11 @@ class BegHomePage extends Component {
     this.setState({
       userZipcode: zipcode
     });
-
-    if (this.state.userZipcode.length === 5) {
-      let readyZipcode = this.state.userZipcode
-      convertZip(readyZipcode)
-    }
-    // else {
-    //   console.log("no zip")
-    //   // prompt("please enter a valid zipcode")
-    // }
-
   }
 
 
-  async convertZip(readyZipcode) {
+  async convertZip(location) {
+    let readyZipcode = this.state.userZipcode
     //const weatherAPIkey = 'u9Ayipu6q9JX9DVPmAAGOZcxu0yDbn795LdVNvgicZZ61FmJpyxFLgHQqf7qU8GB';
     const apiURL = `http://api.zippopotam.us/us/${readyZipcode}`;
     try {
@@ -124,11 +115,12 @@ class BegHomePage extends Component {
       });
     };
 
-    if ("geolocation" in navigator) {
+    if ("geolocation" in navigator || this.state.zipInput.length === 5) {
       navigator.geolocation.getCurrentPosition(
         locationObtained,
         locationDenied
       );
+      this.convertZip()
     } else {
       locationDenied()
       // what happens if we can't get the geolocation?
@@ -143,6 +135,10 @@ class BegHomePage extends Component {
     const zipcode = this.state.userZipcode;
     return (
       <div className="container-1">
+        <div className="enter-loc-prompt">
+            <p className="enterZip">Enter Zip Code:</p>
+            <SearchBar onZipcodeChange={this.handleZipcodeChange}/>
+        </div>
         {
           !this.state.isHidden === true ?
           // || zipcode.length === 5
@@ -178,10 +174,7 @@ class BegHomePage extends Component {
             </p>
           </div>
         ) : (
-          <div className="enter-loc-prompt">
-            <p className="enterZip">Enter Zip Code:</p>
-            <SearchBar onZipcodeChange={this.handleZipcodeChange}/>
-          </div>
+          <p>This is temporary</p>
         )}
         <a href="#bestSpots">
           <img className="arrow" src="https://i.imgur.com/pSTTXkS.png" alt="" />

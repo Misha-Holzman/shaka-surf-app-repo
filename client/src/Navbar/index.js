@@ -9,10 +9,10 @@ class Navbar extends Component {
     super(props);
     this.state = {
       isLoggedIn: this.checkLogin(),
-      username: ""
+      // username: ""
     };
 
-    this.getAllUsers = this.getAllUsers.bind(this);
+    // this.getAllUsers = this.getAllUsers.bind(this);
     this.tryLogin = this.tryLogin.bind(this);
     this.logout = this.logout.bind(this);
   }
@@ -27,14 +27,15 @@ class Navbar extends Component {
 
   // this function was getAllStudents:
   // Tried to wire the username into state but does not work yet.
-  async getAllUsers({ username }) {
-    const {
-      data: { access_token }
-    } = await axios.get("/auth/login", { username });
-    this.setState({
-      username: username
-    });
-  }
+
+  // async getAllUsers({ username }) {
+  //   const {
+  //     data: { access_token }
+  //   } = await axios.get("/auth/login", { username });
+  //   this.setState({
+  //     username: username
+  //   });
+  // }
 
 
 
@@ -71,9 +72,7 @@ class Navbar extends Component {
             </a>
           </li>
           <li>
-            <a href="/work/">
-              <img src="https://i.imgur.com/u6q7XCG.png" className="logo-img" />
-            </a>
+            <img src="https://i.imgur.com/u6q7XCG.png" className="logo-img" />
           </li>
           <li>
             <a href="/clients/" className="nav-text-links">
