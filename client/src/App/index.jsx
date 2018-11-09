@@ -2,12 +2,14 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginForm from "../LoginForm";
 import BegHomepage from "../BegHomepage";
 import IntHomepage from "../IntHomepage";
 import AdvHomepage from "../AdvHomepage";
-import BestDestinations from "../BestDestinations"
-import TitleOfBestSpots from "../TitleOfBestSpots"
+import QuoteAndImage from "../QuoteAndImage";
+import TitleOfBestSpots from "../TitleOfBestSpots";
+import Forecasts from "../Forecasts";
 import Navbar from "../Navbar";
 import Mapbox from "../Map";
 import "./style.css";
@@ -32,7 +34,8 @@ class App extends React.Component {
         <div className="content">
         <BegHomepage />
         <TitleOfBestSpots />
-        <BestDestinations />
+        <QuoteAndImage />
+        <Forecasts />
         </div>
       </div>
     );

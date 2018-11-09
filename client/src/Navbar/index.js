@@ -39,7 +39,6 @@ class Navbar extends Component {
 
 
 
-
   async tryLogin({ email, password }) {
     const {
       data: { access_token }
@@ -62,17 +61,17 @@ class Navbar extends Component {
       <div className="nav-container">
         <ul className="nav">
           <li>
-            <a href="/" className="nav-text-links">
+            <a href="#forcast" className="nav-text-links">
               Forecasts
             </a>
           </li>
           <li>
-            <a href="/about/" className="nav-text-links">
-              Instruction
+            <a href="#bestSpots" className="nav-text-links">
+              Destinations
             </a>
           </li>
           <li>
-            <img src="https://i.imgur.com/u6q7XCG.png" className="logo-img" />
+            <img src="https://i.imgur.com/olWmAtO.png" className="logo-img" />
           </li>
           <li>
             <a href="/clients/" className="nav-text-links">

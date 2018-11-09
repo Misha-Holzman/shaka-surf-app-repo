@@ -8,55 +8,55 @@ class TitleOfBestSpots extends Component {
       <div id="bestSpots"></div>
 
       {/*change the experience level based on state*/}
-        <h1 className="best-spot-title">Best Surf Spots for a *Beginner!</h1>
+        <h1 className="best-spot-title">SOME OF THE BEST SURF SPOTS IN THE WORLD</h1>
         <div id="press">
         <div className="press-container hover11">
           <div className="img-container">
             <a
-              href="https://www.villagevoice.com/2016/09/28/a-bold-take-on-taiwanese-street-food-in-east-williamsburg/"
+              href="https://www.youtube.com/watch?v=fzyh70biJ7c"
               target="_blank"
             >
-              <img src="https://i.imgur.com/oUVUH32.png" alt="" className="img" />
+              <img src="https://i.imgur.com/Iwyr9Ue.jpg" alt="" className="img" />
             </a>
           </div>
           <div className="img-container">
             <a
-              href="http://www.grubstreet.com/2016/05/win-son-modern-taiwanese-brooklyn-opening.html"
+              href="https://grapevine.is/mag/feature/2017/04/21/making-waves-braving-the-sea-with-icelands-crazy-surf-gang/"
               target="_blank"
             >
-              <img src="https://i.imgur.com/zWbKjhf.png" alt="" className="img"/>
+              <img src="https://i.imgur.com/4LPe3ZJ.jpg" alt="" className="img"/>
             </a>
           </div>
           <div className="img-container">
             <a
-              href="https://www.villagevoice.com/2017/06/27/boys-meet-grill-when-the-guys-behind-win-son-got-together-it-was-love-at-first-bite/"
+              href="https://www.surfer.com/features/mauritania-surf-exploration-2-08/"
               target="_blank"
             >
-              <img src="https://i.imgur.com/i2veK1o.png" alt="" className="img"/>
+              <img src="https://i.imgur.com/GwiTnjI.jpg" alt="" className="img"/>
             </a>
           </div>
           <div className="img-container">
             <a
-              href="https://ny.eater.com/2018/2/27/17053136/win-son-nyc-review-two-stars-taiwanese-american"
+              href="https://www.surfertoday.com/surfing/7056-the-best-hawaiian-surf-spots"
               target="_blank"
             >
-              <img src="https://i.imgur.com/s1j1X8B.png" alt="" className="img"/>
+              <img src="https://i.imgur.com/RBEqS6M.jpg" alt="" className="img"/>
             </a>
           </div>
           <div className="img-container">
             <a
-              href="https://ny.eater.com/maps/best-taiwanese-food-nyc-brooklyn-queens-manhattan"
+              href="https://www.surfingaustralia.com/"
               target="_blank"
             >
-              <img src="https://i.imgur.com/BlwUBqT.png" alt="" className="img"/>
+              <img src="https://i.imgur.com/Z4Mi2SK.jpg" alt="" className="img"/>
             </a>
           </div>
           <div className="img-container">
             <a
-              href="https://www.theinfatuation.com/new-york/reviews/win-son"
+              href="https://lushpalm.com/surfing-nicaragua/"
               target="_blank"
             >
-              <img src="https://i.imgur.com/AlmNNKm.png" alt="" className="img"/>
+              <img src="https://i.imgur.com/CSeFS8s.jpg" alt="" className="img"/>
             </a>
           </div>
         </div>

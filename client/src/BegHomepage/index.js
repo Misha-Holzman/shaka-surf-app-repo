@@ -38,7 +38,7 @@ class BegHomePage extends Component {
       } = await Axios.get(apiURL);
       return place;
     } catch (e) {
-      throw e;
+      // throw e;
     }
   }
 
@@ -53,7 +53,7 @@ class BegHomePage extends Component {
       } = await Axios.get(apiURL);
       return weather;
     } catch (e) {
-      throw e;
+      // throw e;
     }
   }
 
@@ -136,7 +136,7 @@ class BegHomePage extends Component {
     return (
       <div className="container-1">
         <div className="enter-loc-prompt">
-            <p className="enterZip">Enter Zip Code:</p>
+            <h3 className="enterZip">Enter Zip Code:</h3>
             <SearchBar onZipcodeChange={this.handleZipcodeChange}/>
         </div>
         {
@@ -144,32 +144,29 @@ class BegHomePage extends Component {
           // || zipcode.length === 5
           (
           <div className="beg-homepage-container">
-            <p id="date"><span id="date">{info.date}</span></p>
-            <p>
-              <strong>WEATHER – </strong>  <span id="data-size" id="data-size">{info.weatherDescription}</span>
+            {/*<p id="date">{info.date}</p>*/}
+            <p className="data-container">
+              <strong>WEATHER – </strong>  <span id="data-size">{info.weatherDescription}</span>
             </p>
-            <p>
-              <strong>REPORT TAKEN – </strong>  <span id="data-size">{info.time} am</span>
+            <p className="data-container">
+              <strong>REPORT – </strong>  <span id="data-size">{info.time} am</span>
             </p>
-            <p>
-              <strong>SUNRISE – </strong>  <span id="data-size">{info.sunrise}</span>
-            </p>
-            <p>
+            <p className="data-container">
               <strong>WATER TEMP – </strong>  <span id="data-size">{info.waterTemp} f</span>
             </p>
-            <p>
+            <p className="data-container">
               <strong>WAVE HEIGHT – </strong><span id="data-size"> {info.waveHeight} ft</span>
             </p>
-            <p>
+            <p className="data-container">
               <strong>WIND SPEED – </strong>  <span id="data-size">{info.windSpeed} mph</span>
             </p>
-            <p>
+            <p className="data-container" id="swell-height">
               <strong>SWELL HEIGHT – </strong>  <span id="data-size">{info.swellHeight_ft} ft</span>
             </p>
-            <p>
+            <p className="data-container">
               <strong>SWELL PERIOD – </strong>  <span id="data-size">{info.swellPeriod_secs} seconds</span>
             </p>
-            <p>
+            <p className="data-container">
               <strong>SWELL DIRECTION – </strong>  <span id="data-size">{info.swellDirection}</span>
             </p>
           </div>

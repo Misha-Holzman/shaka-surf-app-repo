@@ -57,15 +57,15 @@ export default class Form extends React.Component {
     const { buttonText, size } = this.props;
     const { email, password } = this.state;
     return (
-      <Hero
-        isColor="light"
-        isFullHeight
-        style={{ marginTop: "10px", color: "white", marginRight: "30px" }}
-      >
-        <HeroBody>
-          <Container hasTextAlign="centered">
+      // <Hero
+      //   isColor="light"
+      //   isFullHeight
+      //   style={{ marginTop: "10px", color: "white", marginRight: "30px" }}
+      // >
+        <HeroBody style={{ width: "100%", padding: "8px 0px 8px 0px"}}>
+          <Container hasTextAlign="centered" style={{ width: "100%" }}>
             <Columns>
-              <Column isSize={4} isOffset={4}>
+              <Column isSize={12} isOffset={0}>
                 <Box>
                   {/*
                   <Title
@@ -136,7 +136,7 @@ export default class Form extends React.Component {
             </Columns>
           </Container>
         </HeroBody>
-      </Hero>
+      // </Hero>
     );
   }
 }
@@ -148,6 +148,6 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  size: "large",
+  size: "small",
   buttonText: "Log In"
 };

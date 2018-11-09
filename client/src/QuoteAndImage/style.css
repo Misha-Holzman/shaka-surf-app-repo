@@ -13,17 +13,35 @@
 }
 
 .spot-suggest-container {
-  color: black;
+  margin-top: 15%;
   width: 85%;
-  display: flex;
+  font-family: 'Montserrat', sans-serif;
+
+/*  display: flex;
   flex-flow: row wrap;
-  justify-content: center;
-  padding: 5px;
+  justify-content: flex-end;
 /*border-top: 1px solid white;
   border-bottom: 1px solid white;*/
-  position: absolute;
-  top: 40%;
 }
+
+.quote {
+  color: white;
+  font-family: "Amatic SC", cursive !important;
+
+}
+
+.quote-author {
+  color: gray;
+}
+
+
+
+
+
+
+
+
+
 
 p {
 /*  background-color: rgba(0, 0, 0, .2);
