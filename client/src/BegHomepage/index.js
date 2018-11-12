@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import SearchBar from "../SearchForm";
+import SurfReport from "../SurfReport";
 import Navbar from "../Navbar";
 import "./style.css";
 
@@ -8,28 +9,31 @@ class BegHomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: [],
-      isHidden: false,
-      userZipcode: ""
+      surfInfo: {},
+      userZipcode: "",
+      currentLocation: []
     };
     this.getSurfReport = this.getSurfReport.bind(this);
     this.handleZipcodeChange = this.handleZipcodeChange.bind(this);
+    this.getBrowserLocation = this.getBrowserLocation.bind(this);
   }
 
   // if location is 5 char string, hit the api to return lat long
   // if location is array, hit the api to return zip
 
-  async handleZipcodeChange(zipcode) {
+  async handleZipcodeChange(userZipcode) {
+    const currentLocation = await this.convertZip(userZipcode);
+    this.getSurfReport(currentLocation);
     this.setState({
-      userZipcode: zipcode
+      userZipcode,
+      currentLocation,
     });
   }
 
 
-  async convertZip(location) {
-    let readyZipcode = this.state.userZipcode
+  async convertZip(zip) {
     //const weatherAPIkey = 'u9Ayipu6q9JX9DVPmAAGOZcxu0yDbn795LdVNvgicZZ61FmJpyxFLgHQqf7qU8GB';
-    const apiURL = `http://api.zippopotam.us/us/${readyZipcode}`;
+    const apiURL = `http://api.zippopotam.us/us/${zip}`;
     try {
       const {
         data: {
@@ -38,7 +42,7 @@ class BegHomePage extends Component {
       } = await Axios.get(apiURL);
       return place;
     } catch (e) {
-      // throw e;
+      throw e;
     }
   }
 
@@ -51,9 +55,10 @@ class BegHomePage extends Component {
           data: { weather }
         }
       } = await Axios.get(apiURL);
+
       return weather;
     } catch (e) {
-      // throw e;
+      throw e;
     }
   }
 
@@ -79,7 +84,13 @@ class BegHomePage extends Component {
       place.longitude
     ]);
 
-    const info = {
+    const morningReport = weatherData.hourly[2];
+    const { weatherDesc:[ { value: weatherDescription } ] } = morningReport;
+
+    if (!weatherDescription){
+      debugger;
+    }
+    const surfInfo = {
       location: place,
       date:               weatherData.date,
       sunrise:            weatherData.astronomy[0].sunrise,
@@ -90,48 +101,43 @@ class BegHomePage extends Component {
       windSpeed:          weatherData.hourly[2].windspeedMiles,
       windDirection:      weatherData.hourly[2].winddir16Point,
       weatherIconUrl:     weatherData.hourly[2].weatherIconUrl[0].value,
-      weatherDescription: weatherData.hourly[2].weatherDesc[0].value,
+      weatherDescription,
       swellHeight_ft:     weatherData.hourly[2].swellHeight_ft,
       swellPeriod_secs:   weatherData.hourly[2].swellPeriod_secs,
       swellDirection:     weatherData.hourly[2].swellDir16Point,
       waterTemp:          weatherData.hourly[2].waterTemp_F
     };
 
-    this.setState({ info });
+    this.setState({ surfInfo });
   }
 
-  componentDidMount() {
+
+  getBrowserLocation() {
     const locationObtained = ({ coords: { latitude, longitude } }) => {
       this.getSurfReport({ latitude, longitude });
       //do_something(position.coords.latitude, position.coords.longitude);
-      this.setState({
-        isHidden: false
-      });
+
     };
 
     const locationDenied = err => {
-      this.setState({
-        isHidden: true
-      });
+
     };
 
-    if ("geolocation" in navigator || this.state.zipInput.length === 5) {
+    if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         locationObtained,
         locationDenied
       );
-      this.convertZip()
-    } else {
-      locationDenied()
-      // what happens if we can't get the geolocation?
-      // this.getSurfReport(90210);
     }
+  }
 
-    return;
+
+  componentDidMount() {
+    this.getBrowserLocation();
   }
 
   render() {
-    const { info } = this.state;
+    const { surfInfo, currentLocation } = this.state;
     const zipcode = this.state.userZipcode;
     return (
       <div className="container-1">
@@ -140,38 +146,12 @@ class BegHomePage extends Component {
             <SearchBar onZipcodeChange={this.handleZipcodeChange}/>
         </div>
         {
-          !this.state.isHidden === true ?
+          (surfInfo && 'weatherDescription' in surfInfo) ?
           // || zipcode.length === 5
           (
-          <div className="beg-homepage-container">
-            {/*<p id="date">{info.date}</p>*/}
-            <p className="data-container">
-              <strong>WEATHER – </strong>  <span id="data-size">{info.weatherDescription}</span>
-            </p>
-            <p className="data-container">
-              <strong>REPORT – </strong>  <span id="data-size">{info.time} am</span>
-            </p>
-            <p className="data-container">
-              <strong>WATER TEMP – </strong>  <span id="data-size">{info.waterTemp} f</span>
-            </p>
-            <p className="data-container">
-              <strong>WAVE HEIGHT – </strong><span id="data-size"> {info.waveHeight} ft</span>
-            </p>
-            <p className="data-container">
-              <strong>WIND SPEED – </strong>  <span id="data-size">{info.windSpeed} mph</span>
-            </p>
-            <p className="data-container" id="swell-height">
-              <strong>SWELL HEIGHT – </strong>  <span id="data-size">{info.swellHeight_ft} ft</span>
-            </p>
-            <p className="data-container">
-              <strong>SWELL PERIOD – </strong>  <span id="data-size">{info.swellPeriod_secs} seconds</span>
-            </p>
-            <p className="data-container">
-              <strong>SWELL DIRECTION – </strong>  <span id="data-size">{info.swellDirection}</span>
-            </p>
-          </div>
-        ) : (
-          <p>This is temporary</p>
+          <SurfReport surfInfo={surfInfo} locationName={currentLocation['place name']} />
+          ) : (
+          console.log("no data found")
         )}
         <a href="#bestSpots">
           <img className="arrow" src="https://i.imgur.com/pSTTXkS.png" alt="" />

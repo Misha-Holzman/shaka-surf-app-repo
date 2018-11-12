@@ -71,7 +71,7 @@ class Navbar extends Component {
             </a>
           </li>
           <li>
-            <img src="https://i.imgur.com/olWmAtO.png" className="logo-img" />
+            <img src="https://i.imgur.com/mdLJQJc.png" className="logo-img" />
           </li>
           <li>
             <a href="/clients/" className="nav-text-links">
