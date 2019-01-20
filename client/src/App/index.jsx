@@ -1,18 +1,18 @@
 /* eslint-env browser */
-import React, { Component } from "react";
-import { hot } from "react-hot-loader";
-import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import LoginForm from "../LoginForm";
-import BegHomepage from "../BegHomepage";
-import IntHomepage from "../IntHomepage";
-import AdvHomepage from "../AdvHomepage";
-import QuoteAndImage from "../QuoteAndImage";
-import TitleOfBestSpots from "../TitleOfBestSpots";
-import Forecasts from "../Forecasts";
-import Navbar from "../Navbar";
-import Mapbox from "../Map";
-import "./style.css";
+import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import LoginForm from '../LoginForm';
+import BegHomepage from '../BegHomepage';
+import IntHomepage from '../IntHomepage';
+import AdvHomepage from '../AdvHomepage';
+import QuoteAndImage from '../QuoteAndImage';
+import TitleOfBestSpots from '../TitleOfBestSpots';
+import Forecasts from '../Forecasts';
+import Navbar from '../Navbar';
+import Mapbox from '../Map';
+import './style.css';
 
 class App extends React.Component {
   // constructor(props) {
@@ -26,20 +26,19 @@ class App extends React.Component {
   //   this.logout = this.logout.bind(this);
   // }
 
-
-  render() {
+  render () {
     return (
-      <div className="main-container">
+      <div className='main-container'>
         <Navbar />
-        <div className="content">
-        <BegHomepage />
-        <TitleOfBestSpots />
-        <QuoteAndImage />
-        <Forecasts />
+        <div className='content'>
+          <BegHomepage />
+          <TitleOfBestSpots />
+          <QuoteAndImage />
+          <Forecasts />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default hot(module)(App);
+export default hot(module)(App)
