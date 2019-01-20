@@ -13,7 +13,7 @@ class IntHomePage extends Component {
   componentDidMount() {
     // let userLocation = this.props.userLocation;
     // const api_end = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=da73903d55134e9d8e3202538180511&format=JSON&q=${userLocation}`;
-
+  
     // console.log(this.props);
     const api_end = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=da73903d55134e9d8e3202538180511&format=JSON&q=40.712776,-74.005974`;
     const self = this;

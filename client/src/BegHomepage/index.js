@@ -47,7 +47,7 @@ class BegHomePage extends Component {
   }
 
   async getWeather(weatherLocation) {
-    const weatherAPIkey = "da73903d55134e9d8e3202538180511";
+    const weatherAPIkey = "93491824b1ff49f385d230709192001";
     const apiURL = `http://api.worldweatheronline.com/premium/v1/marine.ashx?format=JSON&key=${weatherAPIkey}&q=${weatherLocation}`;
     try {
       const {

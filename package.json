@@ -24,16 +24,8 @@
     "title": "demo react-on-rails",
     "react_mount_root": "container"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://git.generalassemb.ly/wdi-nyc/react-on-rails.git"
-  },
-  "author": "Jason Seminara",
+  "author": "Misha Holzman",
   "license": "SEE LICENSE IN LICENSE.txt",
-  "bugs": {
-    "url": "https://git.generalassemb.ly/wdi-nyc/react-on-rails/issues"
-  },
-  "homepage": "https://git.generalassemb.ly/wdi-nyc/react-on-rails#readme",
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
