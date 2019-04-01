@@ -149,7 +149,7 @@ class BegHomePage extends Component {
               <SurfReport surfInfo={surfInfo} locationName={currentLocation['place name']} />
             ) : (
               console.log('no data found')
-            )}
+            )} 
         <a href='#bestSpots'>
           <img className='arrow' src='https://i.imgur.com/pSTTXkS.png' alt='' />
         </a>

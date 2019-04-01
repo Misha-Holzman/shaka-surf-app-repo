@@ -15,7 +15,4 @@ class News extends Component {
   }
 }
 
-export default News;
-
-
-
+export default News

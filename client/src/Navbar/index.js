@@ -82,7 +82,7 @@ class Navbar extends Component {
             </a>
             {/*
             <div>
-               
+              
               // login form not functioning yet.
               
               {!isLoggedIn ? (

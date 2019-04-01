@@ -26,7 +26,6 @@ class Mapbox extends Component {
     //         // console.log("state", locations);
     //     })
     // }
-
     // _renderMarker = (result, i) => {
     //     console.log(result)
     //     // const lat = result.latitude;
