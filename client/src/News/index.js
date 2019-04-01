@@ -8,7 +8,7 @@ class News extends Component {
       <div className="container-4">
         <div className="forecast-container" id="forcast">
           <h1 className="forecast-title">Surfing News</h1>
-          {/* stick a carosel here with some current event stories */}
+          {/* stick a carosel here with some current event stories  */}
         </div>
       </div>
     );
