@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import Axios from "axios";
-import "./style.css";
+import React, { Component } from 'react';
+import Axios from 'axios';
+import './style.css';
 
 class IntHomePage extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       info: []
-    };
+    }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     // let userLocation = this.props.userLocation;
     // const api_end = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=da73903d55134e9d8e3202538180511&format=JSON&q=${userLocation}`;
-  
+
     // console.log(this.props);
-    const api_end = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=da73903d55134e9d8e3202538180511&format=JSON&q=40.712776,-74.005974`;
-    const self = this;
+    const api_end = `http://api.worldweatheronline.com/premium/v1/marine.ashx?key=da73903d55134e9d8e3202538180511&format=JSON&q=40.712776,-74.005974`
+    const self = this
     Axios.get(api_end)
       .then(response => {
         console.log(response)
 
-        let locationData = response.data.data.request[0];
-        let weatherData = response.data.data.weather[0];
+        let locationData = response.data.data.request[0]
+        let weatherData = response.data.data.weather[0]
 
-        console.log(locationData);
-        console.log(weatherData);
+        console.log(locationData)
+        console.log(weatherData)
 
 
         const info = {
@@ -43,23 +43,23 @@ class IntHomePage extends Component {
           swellHeight_ft: weatherData.hourly[2].swellHeight_ft,
           swellPeriod_secs: weatherData.hourly[2].swellPeriod_secs,
           swellDirection: weatherData.hourly[2].swellDir16Point,
-          waterTemp: weatherData.hourly[2].waterTemp_F,
-        };
+          waterTemp: weatherData.hourly[2].waterTemp_F
+        }
         self.setState({
           info: info
-        });
-        console.log(info);
+        })
+        console.log(info)
       })
       .catch(error => {
-        console.log('error fetching data');
-      });
+        console.log('error fetching data')
+      })
   }
 
-  render() {
-    const { info } = this.state;
+  render () {
+    const { info } = this.state
     return (
-      <div className="container-2">
-      {/*
+      <div className='container-2'>
+        {/*
       <div className="beg-homepage-container">
       <img src={info.weatherIconUrl} className="weather-img" />
         <p>
@@ -118,8 +118,8 @@ class IntHomePage extends Component {
       </div>
       */}
       </div>
-    );
+    )
   }
 }
 
-export default IntHomePage;
+export default IntHomePage

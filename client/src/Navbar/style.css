@@ -5,12 +5,12 @@
   background-color: rgba(255, 255, 255, 1);
   width: 85%;
   margin: 0 auto;
-  padding-right: 1.5%;
 /*  border-right: 1px solid black;
   border-left: 1px solid black;*/
 }
 
 .nav {
+  margin: 0 auto;
   border-width: 1px 0;
   margin: 0;
   padding: 0;
@@ -19,6 +19,15 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.forcasts-link {
+  margin-right: 1%;
+}
+
+.news-link {
+  margin-right: 1.5%;
+}
+
 
 .nav-text-links {
   text-decoration: none;

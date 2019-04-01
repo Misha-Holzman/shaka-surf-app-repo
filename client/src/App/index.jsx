@@ -9,7 +9,7 @@ import IntHomepage from '../IntHomepage';
 import AdvHomepage from '../AdvHomepage';
 import QuoteAndImage from '../QuoteAndImage';
 import TitleOfBestSpots from '../TitleOfBestSpots';
-import Forecasts from '../Forecasts';
+import News from '../News';
 import Navbar from '../Navbar';
 import Mapbox from '../Map';
 import './style.css';
@@ -34,7 +34,7 @@ class App extends React.Component {
           <BegHomepage />
           <TitleOfBestSpots />
           <QuoteAndImage />
-          <Forecasts />
+          <News />
         </div>
       </div>
     )
